@@ -11,7 +11,7 @@
 # grep -nH --color=auto
 
 if ($#argv < 2) then
-    echo "$#argv"
+    echo "Argument count: $#argv"
     echo "USAGE : $0 pattern file"
     exit 1
 endif
@@ -19,6 +19,6 @@ endif
 @ i = 2
 while ($i < $#argv)
     #echo "$argv[$i]"
-    grep $1 $argv[$i] | sed 's/c:/c +/g' | sed 's/^/vir /g'
+    grep -nH --color=auto $1 $argv[$i] | sed 's/c:/c +/g' | sed 's/^/vir /g'
     @ i++
 end
