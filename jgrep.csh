@@ -8,7 +8,6 @@
 
 # 세팅 
 # alias vir 'vim -R'
-# grep -nH --color=auto
 
 if ($#argv < 2) then
     echo "Argument count: $#argv"
@@ -18,7 +17,6 @@ endif
 
 @ i = 2
 while ($i < $#argv)
-    #echo "$argv[$i]"
     grep -nH --color=auto $1 $argv[$i] | sed 's/c:/c +/g' | sed 's/^/vir /g'
     @ i++
 end
