@@ -14,8 +14,15 @@ if ($#argv < 2) then
     exit 1
 endif
 
+set OS = `uname`
+if ("$OS" == "SunOS") then
+    set grep_util = /usr/xpg4/bin/grep
+else
+    set grep_util = /bin/grep
+endif
+
 @ i = 2
 while ($i < $#argv)
-    grep -nH --color=auto $1 $argv[$i] | sed 's/c:/c +/g' | sed 's/:/ /1' | sed 's/^/vir /g'
+    $grep_util -nH --color=always $1 $argv[$i] | sed 's/c:/c +/g' | sed 's/:/ /1' | sed 's/^/vir /g'
     @ i++
 end
