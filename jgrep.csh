@@ -10,13 +10,12 @@
 # alias vir 'vim -R'
 
 if ($#argv < 2) then
-    echo "Argument count: $#argv"
-    echo "USAGE : $0 pattern file"
+    echo "USAGE : $0 pattern file (current argv cnt: $#argv)"
     exit 1
 endif
 
 @ i = 2
 while ($i < $#argv)
-    grep -nH --color=auto $1 $argv[$i] | sed 's/c:/c +/g' | sed 's/^/vir /g'
+    grep -nH --color=auto $1 $argv[$i] | sed 's/c:/c +/g' | sed 's/:/ /1' | sed 's/^/vir /g'
     @ i++
 end
