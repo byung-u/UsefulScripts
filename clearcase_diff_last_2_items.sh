@@ -11,6 +11,11 @@ function show_help() {
 }
 
 
+function error() {                                                              
+  echo "[ERR]: $*" 1>&2                                                       
+}     
+
+
 function get_last_file() {
   curr_num=`echo $1 | rev | cut -d '/' -f 1 | rev`
   if [ "CHECKEDOUT" == $curr_num ]; then
